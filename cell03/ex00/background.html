@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>change blackground</title>
+    <link rel="stylesheet" href="background.css">
+</head>
+<body>
+    <button id="changeColorButton">Click me!</button>
+
+    <script>
+        // Function to generate a random hex color
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Event listener to change background color on button click
+        document.getElementById("changeColorButton").addEventListener("click", function() {
+            document.body.style.backgroundColor = getRandomColor();
+        });
+    </script>
+</body>
