@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h1>It's over 9000 Calculator</h1>
+    <!-- แบบฟอร์มเครื่องคิดเลข -->
+    <input type="text" id="leftOperand" placeholder="Left number">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="rightOperand" placeholder="Right number">
+    <button onclick="calculate()">Try me!</button>
+    
+    <script>
+        // ฟังก์ชันหลักสำหรับการคำนวณ
+        function calculate() {
+            const leftOperand = document.getElementById('leftOperand').value;
+            const rightOperand = document.getElementById('rightOperand').value;
+            const operator = document.getElementById('operator').value;
+
+            // ตรวจสอบให้เป็นตัวเลขบวก
+            if (!isPositiveInteger(leftOperand) || !isPositiveInteger(rightOperand)) {
+                alert("Error :(");
+                console.error("Error :(");
+                return;
+            }
+
+            const num1 = parseInt(leftOperand);
+            const num2 = parseInt(rightOperand);
+            let result;
+
+            try {
+                // คำนวณตาม operator
+                switch (operator) {
+                    case '+': result = num1 + num2; break;
+                    case '-': result = num1 - num2; break;
+                    case '*': result = num1 * num2; break;
+                    case '/':
+                    case '%':
+                        if (num2 === 0) {
+                            alert("It's over 9000!");
+                            console.error("It's over 9000!");
+                            return;
+                        }
+                        result = operator === '/' ? num1 / num2 : num1 % num2;
+                        break;
+                    default: throw new Error("Invalid Operator");
+                }
+
+                alert(`Result: ${result}`);
+                console.log(`Result: ${result}`);
+            } catch (e) {
+                alert("Error :(");
+                console.error("Error :(");
+            }
+        }
+
+        // ตรวจสอบว่าค่าที่ใส่มาเป็นเลขจำนวนเต็มบวก
+        function isPositiveInteger(value) {
+            return /^\d+$/.test(value);
+        }
+
+        // แจ้งเตือนทุก 30 วินาที
+        setInterval(() => {
+            alert("Please, use me...");
+        }, 30000);
+    </script>
+</body>
+</html>
