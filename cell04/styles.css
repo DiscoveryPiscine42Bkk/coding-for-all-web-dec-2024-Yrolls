@@ -1,0 +1,135 @@
+/*
+
+    Use this to style every webpage.
+    In the <head> tag, put <link href="styles.css" rel="stylesheet"> for the page to have effect.
+
+*/
+
+@import 'https://cdn.jsdelivr.net/gh/lazywasabi/thai-web-fonts@7/fonts/Anakotmai/Anakotmai.css';
+
+/* Variables */
+:root {
+    --base-color: #4f3929;
+    --accent-color: #956855;
+    --bg-color: #f9f5f1;
+
+    --text-color-light: #fff;
+    --text-color-dark: #333;
+}
+
+/* Document Properties*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Anakotmai';
+}
+
+
+
+/* Background Image */
+.container {
+    min-height: 120vh;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* The actual image which getting pushed down below*/
+.bg::after {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(45%);
+    filter: blur(50%);
+    background-image: url("img/bgimg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--base-color); /* สีน้ำตาลเข้ม */
+    padding: 10px 0;
+    border-radius: 0 0 15px 15px; /* โค้งมน */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+.navbar a {
+    color: var(--text-color-light); /* ตัวหนังสือสีขาว */
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 10px; /* เพิ่มความโค้ง */
+    transition: background-color 0.3s ease;
+}
+
+/* Navigation Bar Hover Effect */
+.navbar a:hover {
+    background-color: var(--accent-color); /* สีเข้มขึ้นเมื่อ hover */
+}
+
+
+
+/* Content for individual pages */
+.content {
+    text-align: center;
+    margin: 80px;
+    padding: 20px 80px 80px 80px;
+    color: var(--text-color-dark);
+    background-color: var(--bg-color);
+    border-radius: 2vw;
+}
+
+.content p {
+    font-size: 1em;
+}
+
+.content h1 {
+    font-size: 2.3em;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+
+
+/* Footer for every page. */
+footer {
+    width: 100%;
+    height: 5vh;
+    padding-right: 4vw;
+    background-color: var(--base-color);
+    align-content: center;
+    color: var(--text-color-light);
+}
+
+footer p {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.8em;
+    float: right;
+}
